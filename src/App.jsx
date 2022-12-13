@@ -5,7 +5,6 @@ import { Hero } from "./components/Hero";
 import { Navbar } from "./components/Navbar";
 import "./style.css";
 import data from "./data";
-console.log(data);
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -23,17 +22,9 @@ still be block elements, stacked vertically. We'll add styling later.
 */
 
   const cardsDisplay = data.map((item) => {
-    return (
-      <Card
-        key={item.id}
-        img={item.coverImg}
-        point={item.stats.rating}
-        count={item.stats.reviewCount}
-        title={item.title}
-        price={item.price}
-      />
-    );
+    return <Card key={item.id} item={item} />;
   });
+
 
   return (
     <div className="container">

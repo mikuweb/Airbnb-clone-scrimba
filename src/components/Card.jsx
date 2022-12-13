@@ -1,7 +1,17 @@
-export const Card = ({ img, point, count, title, price }) => {
+export const Card = (props) => {
+  let badgeText;
+  if (props.item.openSpots === 0) {
+    badgeText = "SOLD OUT";
+  } else if (props.item.location === "Online") {
+    badgeText = "ONLINE";
+  } else null;
+
+  console.log(props.item);
+
   return (
     <div className="card">
-      <img className="card-img" src={`./images/${img}`} />
+      {badgeText && <div className="card-badge">{badgeText}</div>}
+      <img className="card-img" src={`./images/${props.item.coverImg}`} />
       <div className="content">
         <div className="rating">
           <img
@@ -9,12 +19,14 @@ export const Card = ({ img, point, count, title, price }) => {
             src="./images/Star-rating.png"
             width={"14px"}
           />
-          <div className="rating-point">{point}</div>
-          <div className="rating-count">({count})・USA</div>
+          <div className="rating-point">{props.item.stats.rating}</div>
+          <div className="rating-count">
+            ({props.item.stats.reviewCount})・USA
+          </div>
         </div>
-        <div className="title">{title}</div>
+        <div className="title">{props.item.title}</div>
         <div className="price">
-          <div className="price-price">From ${price}</div>
+          <div className="price-price">From ${props.item.price}</div>
           <div className="price-person">/ person</div>
         </div>
       </div>
