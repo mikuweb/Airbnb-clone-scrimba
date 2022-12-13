@@ -22,27 +22,24 @@ Note: We haven't styled the group of components yet, so they'll
 still be block elements, stacked vertically. We'll add styling later.
 */
 
-const cardsDisplay = data.map(item => {
-  return(
-    
-<Card
-          img={item.coverImg}
-          point={item.stats.rating}
-          count={item.stats.reviewCount}
-          title={item.title}
-          price={item.price }
-        />
-        
-  )
-})
+  const cardsDisplay = data.map((item) => {
+    return (
+      <Card
+        key={item.id}
+        img={item.coverImg}
+        point={item.stats.rating}
+        count={item.stats.reviewCount}
+        title={item.title}
+        price={item.price}
+      />
+    );
+  });
 
   return (
     <div className="container">
       <Navbar />
       <Hero />
-      <div className="cards_section">
-      {cardsDisplay}
-      </div>
+      <div className="cards_section">{cardsDisplay}</div>
     </div>
   );
 }
